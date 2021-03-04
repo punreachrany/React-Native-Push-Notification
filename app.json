@@ -20,10 +20,13 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.punreachrany.expo_fcm",
+      "useNextNotificationsApi": true,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       }
+    
     },
     "web": {
       "favicon": "./assets/favicon.png"
