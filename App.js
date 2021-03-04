@@ -25,8 +25,20 @@ export default function App() {
       })
       .then((statusObj) => {
         if (statusObj.status !== "granted") {
-          return;
+          throw new Error("Permission not granted!");
         }
+      })
+      .then(() => {
+        console.log("getting token");
+        return Notifications.getExpoPushTokenAsync();
+      })
+      .then((data) => {
+        // console.log(data);
+        const token = data.data;
+      })
+      .catch((err) => {
+        console.log(err);
+        return null;
       });
   }, []);
 
@@ -61,13 +73,16 @@ export default function App() {
       },
     });
   };
+
+  // const triggerPushNotificationHandler = () => {};
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
       <Button
-        title="Trigger Local Push Notification"
+        title="Local Notification"
         onPress={triggerLocalNotificationHandler}
       />
+      {/* <Button title="Push Notification" onPress={() => {}} /> */}
       <StatusBar style="auto" />
     </View>
   );
